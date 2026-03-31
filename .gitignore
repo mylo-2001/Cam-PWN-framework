@@ -1,0 +1,33 @@
+# Python
+venv/
+.venv/
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+.Python
+*.so
+*.egg
+*.egg-info/
+dist/
+build/
+
+# Cam-PWN data (sensitive)
+data/cam_pwn.db
+data/screenshots/
+data/exports/
+data/reports/*.html
+data/reports/*.pdf
+
+# Config secrets (optional - keep config.yaml template)
+# config.local.yaml
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db

@@ -1,0 +1,41 @@
+# Cam-PWN Framework - Dependencies
+pyyaml>=6.0.0
+# Install: pip install -r requirements.txt
+
+# Shodan & discovery
+shodan>=1.31.0
+requests>=2.31.0
+python-nmap>=0.7.1
+
+# Crypto & storage
+cryptography>=42.0.0
+sqlalchemy>=2.0.0
+pgpy>=0.6.0
+
+# Reporting & UI
+jinja2>=3.1.0
+weasyprint>=60.0  # HTML to PDF (optional)
+
+# System & networking
+psutil>=5.9.0
+colorama>=0.4.6
+tqdm>=4.66.0
+
+# Metasploit RPC
+pymetasploit3>=1.0.3
+
+# REST API (optional)
+fastapi>=0.109.0
+uvicorn[standard]>=0.27.0
+
+# Optional: Tor/proxy support
+PySocks>=1.7.1
+requests[socks]>=2.31.0
+
+# Optional: ML fingerprinting (lightweight)
+Pillow>=10.0.0
+scikit-learn>=1.3.0
+
+# Optional: headless browser for full UI screenshots (cam_pwn.screenshots.capture_screenshot_headless)
+playwright>=1.40.0   # then: playwright install chromium
+selenium>=4.0.0      # requires chromedriver/geckodriver on PATH

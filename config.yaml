@@ -1,0 +1,88 @@
+# Cam-PWN Framework Configuration (Linux/Kali-first)
+# Use only on systems you are authorized to test.
+#
+# Kali default paths (used when config empty):
+#   Wordlist:    /usr/share/wordlists/rockyou.txt
+#   msfrpcd:     /usr/bin/msfrpcd
+#   Reports:     data/reports
+#   Screenshots: data/screenshots
+
+# Global mode/profile settings
+# mode: stealth | normal | aggressive
+mode: "normal"
+safe_mode: false          # When true, TUI will skip brute-force, exploits, C2
+project: ""               # Optional project name (e.g. client_x_gr)
+
+# Rate limiting / stealth: delay_ms between requests (0 = no delay). Higher = quieter scan.
+stealth:
+  delay_ms: 0             # e.g. 100–500 for stealth
+  request_timeout: 8      # seconds for HTTP/socket requests
+
+# Tor / proxy for outbound HTTP (CVE checks, etc.). Optional.
+# proxy:
+#   url: "socks5://127.0.0.1:9050"   # or http://127.0.0.1:8080
+#   # or:
+#   http: "socks5://127.0.0.1:9050"
+#   https: "socks5://127.0.0.1:9050"
+
+shodan:
+  api_key: ""  # Set via CAM_PWN_SHODAN_KEY or here
+  max_results_per_query: 1000
+  streaming: false  # Shodan Streaming API (requires paid)
+
+database:
+  path: "data/cam_pwn.db"
+  encrypted: true
+  encryption_key_env: "CAM_PWN_DB_KEY"  # 32-byte hex or base64
+
+storage:
+  screenshots_dir: "data/screenshots"
+  reports_dir: "data/reports"
+  wordlists_dir: "data/wordlists"
+
+# Wordlist path: on Kali Linux use /usr/share/wordlists/rockyou.txt
+# (after: sudo gunzip -k /usr/share/wordlists/rockyou.txt.gz)
+wordlist_path_kali: "/usr/share/wordlists/rockyou.txt"
+
+bruteforce:
+  threads: 8
+  timeout: 5
+  default_wordlist: "rockyou_top1000.txt"
+  # Full path for brute-force (Kali: /usr/share/wordlists/rockyou.txt)
+  wordlist_path: ""  # e.g. /usr/share/wordlists/rockyou.txt
+  rtsp_ports: [554, 8554]
+  http_ports: [80, 443, 8080, 8888]
+
+exploitation:
+  metasploit_rpc_host: "127.0.0.1"
+  metasploit_rpc_port: 55553
+  metasploit_rpc_pass: ""  # Required for [m] MSF by CVE and auto-start [s]. Or set CAM_PWN_MSF_PASS
+  msfrpcd_path: ""         # Optional: Kali default /usr/bin/msfrpcd. Override if custom install.
+  reverse_shell_lhost: ""  # Your IP for callbacks
+  reverse_shell_lport: 4444
+
+c2:
+  # Covenant / Empire style - URL and API key
+  enabled: false
+  endpoint: ""
+  api_key: ""
+
+reporting:
+  map_provider: "leaflet"  # leaflet | google
+  google_maps_key: ""      # If using Google
+  include_screenshots: true
+  pgp_encrypt_reports: false
+  pgp_recipient: ""
+
+integrations:
+  burp:
+    enabled: false
+    proxy: "http://127.0.0.1:8080"
+  zap:
+    enabled: false
+    api_key: ""
+    base_url: "http://127.0.0.1:8080"
+
+plugins:
+  scan_plugins: []
+  exploit_plugins: []

@@ -1,0 +1,9 @@
+# Placeholder: add rockyou_top1000 or symlink to rockyou.txt
+# Format: one password per line, or user:pass
+admin
+123456
+password
+12345678
+admin123
+1234
+12345
