@@ -29,8 +29,6 @@ Production-oriented **IP camera penetration testing framework**. Primary platfor
 
 ## Screenshots
 
-> Add your screenshots under `docs/images/` and keep these names for GitHub rendering.
-
 ![TUI Banner](docs/images/tui-banner.png)
 ![TUI Main Menu](docs/images/tui-main-menu.png)
 
